@@ -1,13 +1,16 @@
 $(document).ready(function() {
 	$('.button').click(function() {
-		changeContent($(this).attr('rel'));
+		var button = this;
 		$('header').fadeIn().removeClass('hidden');
-		//$('#header-wrapper').animate({height: '150px'})
+		$('#header-wrapper').animate({height: '150px'}, function() {
+			changeContent($(button).attr('rel'));
+		});
 	});
 	$('header').click(function() {
-		changeContent('0');
 		$('header').fadeOut().addClass('hidden');		
-		//$('#header-wrapper').animate({height: '50px'})		
+		$('#header-wrapper').animate({height: '50px'}, function() {
+			changeContent('0');
+		});
 	});
 	function changeContent(id) {
 		$('.content.visible').fadeOut(function() {
