@@ -1,0 +1,32 @@
+application: kobstaden-hrd
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: false
+default_expiration: "13d 3h 7s"
+
+libraries:
+- name: PIL
+  version: latest
+- name: webob
+  version: latest
+- name: jinja2
+  version: latest
+- name: markupsafe
+  version: latest
+- name: setuptools
+  version: latest
+
+inbound_services:
+- warmup
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /static
+  static_dir: static
+  
+- url: .*
+  script: main.app

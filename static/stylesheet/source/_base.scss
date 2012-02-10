@@ -1,0 +1,66 @@
+/**
+ * Base (_base.scss)
+ * Partial for initializing common variables, importing utilities and setting up the framework
+ */
+
+//@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+
+// Configure blueprint
+$blueprint-grid-columns: 24;
+$blueprint-container-size: 950px;
+$blueprint-grid-margin: 10px;
+
+// Use this to calculate the width based on the total width.
+// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+
+// Global constants and variables goes here (re-usable colors, default sizes etc.)
+$color_primary: #fff; 			// white
+$color_secondary: #eee; 		// gray
+$color_tertiary: #ddd; 			// dark gray
+$color_alt-primary: #000; 	// black
+$color_alt-secondary: #444; // light black
+$color_con-primary: #4294D1;// blue
+
+$font_normal: 'TitilliumText22LRegular', helvetica, arial, sans-serif;
+
+$font-color: $color_alt-primary;
+$link-color: $color_alt-primary;
+$link-hover-color: $color_alt-secondary;
+
+// Custom mixins goes here
+
+// Load compass tools, utilities and blueprint modules
+@import "blueprint";
+@import "blueprint/reset";
+@import "compass/css3/opacity";
+@import "compass/css3/font-face";
+//@import "compass/css3/transition";
+//@import "compass/typography/text/replacement";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+//@import "compass/css3/text-shadow"
+
+@include font-face("TitilliumText22LRegular", 
+	font-files(
+		"../../../fonts/TitilliumText22L003-webfont.eot?#iefix", embedded-opentype,
+		"../../../fonts/TitilliumText22L003-webfont.woff", woff, 
+		"../../../fonts/TitilliumText22L003-webfont.ttf", truetype,
+		"../../../fonts/TitilliumText22L003-webfont.svg#TitilliumText22LRegular", svg
+	),
+	"../../../fonts/TitilliumText22L003-webfont.eot"
+);
+
+@mixin transitionable {
+	-webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;	
+}
+
+@mixin scalable($amount) {
+	-webkit-transform: scale($amount);
+  -moz-transform: scale($amount);
+  -o-transform: scale($amount);
+  -ms-transform: scale($amount);
+}
