@@ -1,5 +1,11 @@
 $(document).ready(function() {
-	
+	// Unsubscribed/removed from sign-up list
+	$(window).load(function() {
+		if (location.pathname == '/removed/') {
+			signUpResponse('<span class="message"><img src="/static/images/icon-exclamation.gif" alt="Advarsel" />Du er er blevet slettet fra tilmeldingslisten.</span>');
+			_gaq.push(['_trackEvent', 'Subscribers', 'Unsubscribe']);
+		}		
+	});
 	// Navigation
 	$('.button').click(function() {
 		changeContent($(this).attr('rel'));
@@ -13,6 +19,20 @@ $(document).ready(function() {
 			$('.content[rel=' + id + ']').fadeIn().addClass('visible');
 		});		
 	}
+	// Prepare sign up inputs
+	$('form#signup input.input-email').focus(function() {
+	  var input = $(this);
+	  if (input.val() == input.attr('placeholder')) {
+	    input.val('');
+	    input.removeClass('placeholder');
+	  }
+	}).blur(function() {
+	  var input = $(this);
+	  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	    input.addClass('placeholder');
+	    input.val(input.attr('placeholder'));
+	  }
+	}).blur();
 	// Sign up form submit
 	$('#signup').submit(function() {
 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -22,6 +42,8 @@ $(document).ready(function() {
 		} else {
 			$('.validation-error').hide();
 			$('.input-submit').attr('disabled', 'disabled');
+			var input = $('.input-submit');
+			if (input.val() == input.attr('placeholder')) { input.val(''); }
 			$.ajax({
 			  type: 'POST',
 			  url: '/signup/',
@@ -31,13 +53,13 @@ $(document).ready(function() {
 						signUpResponse('<span class="message"><img src="/static/images/icon-checkmark.gif" alt="OK" />Tak for din tilmelding!</span>');
 						_gaq.push(['_trackEvent', 'Subscribers', 'Quick Form']); // track sign-up in Google Analytics
 					} else if (data.message == "Email already signed up") {
-						signUpResponse('<span class="message">E-mailen er allerede tilmeldt.</span>');
+						signUpResponse('<span class="message"><img src="/static/images/icon-exclamation.gif" alt="Advarsel" />E-mailen er allerede tilmeldt.</span>');
 					} else {
-						signUpResponse('<span class="message">Der gik noget galt, forsøg igen!</span>');
+						signUpResponse('<span class="message"><img src="/static/images/icon-cross.gif" alt="Fejl" />Der gik noget galt, forsøg igen!</span>');
 					}
 				},
 				error: function() {
-					signUpResponse('<span class="message">Der gik noget galt, forsøg igen!</span>');
+					signUpResponse('<span class="message"><img src="/static/images/icon-cross.gif" alt="Fejl" />Der gik noget galt, forsøg igen!</span>');
 				},
 				dataType: 'json'
 			});

@@ -41,8 +41,8 @@ class IndexHandler(BaseHandler):
 
 class CollectEmail(BaseHandler):
     def _send_mail(self, email, key):
-        sender_address = "Kobstaden.dk Support <jhh@kobstaden.dk>"
-        subject = "Confirm your registration"
+        sender_address = "Kobstaden.dk <jhh@kobstaden.dk>"
+        subject = "Tak for din interesse!"
         body = self.jinja2.render_template("mail.txt", **{"key": key, "email": email})
         body_html = self.jinja2.render_template("mail.html", **{"key": key, "email": email})
         message = mail.EmailMessage(sender=sender_address, to=email, subject=subject, html=body_html, body=body)
