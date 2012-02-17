@@ -53,6 +53,17 @@ $link-hover-color: $color_alt-secondary;
 	"../../../fonts/TitilliumText22L003-webfont.eot"
 );
 
+@include font-face("TitilliumText22LBold", 
+	font-files(
+		"../../../fonts/TitilliumText22L005-webfont.eot?#iefix", embedded-opentype,
+		"../../../fonts/TitilliumText22L005-webfont.woff", woff, 
+		"../../../fonts/TitilliumText22L005-webfont.ttf", truetype,
+		"../../../fonts/TitilliumText22L005-webfont.svg#TitilliumText22LBold", svg
+	),
+	"../../../fonts/TitilliumText22L005-webfont.eot"
+);
+
+
 @mixin transitionable {
 	-webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	// Unsubscribed/removed from sign-up list
 	$(window).load(function() {
 		if (location.pathname == '/removed/') {
@@ -6,12 +7,22 @@ $(document).ready(function() {
 			_gaq.push(['_trackEvent', 'Subscribers', 'Unsubscribe']);
 		}		
 	});
+
+	// Initialize paths
+	var path = window.location.hash;
+	if (path) {
+		path = path.slice(1);
+		changeContent(path);
+		console.log(path);		
+	}
+
 	// Navigation
 	$('.button').click(function() {
 		changeContent($(this).attr('rel'));
 		$('.selected').removeClass('selected');
 		$(this).addClass('selected');
 	});
+
 	// Change content when navigation is clicked
 	function changeContent(id) {
 		$('.content.visible').fadeOut(function() {
@@ -19,6 +30,7 @@ $(document).ready(function() {
 			$('.content[rel=' + id + ']').fadeIn().addClass('visible');
 		});		
 	}
+
 	// Prepare sign up inputs
 	$('form#signup input.input-email').focus(function() {
 	  var input = $(this);
@@ -33,6 +45,7 @@ $(document).ready(function() {
 	    input.val(input.attr('placeholder'));
 	  }
 	}).blur();
+
 	// Sign up form submit
 	$('#signup').submit(function() {
 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -66,6 +79,7 @@ $(document).ready(function() {
 		}		
 		return false;		
 	});
+
 	// Sign up response
 	function signUpResponse(message){
 		$('form#signup').fadeOut(function() {

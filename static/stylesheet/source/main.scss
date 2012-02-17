@@ -259,7 +259,7 @@ body {
 		#content-2 {
 			@include prepend(1);
 			@include append(1);
-						
+
 			.section-wrapper {
 				
 				a {
@@ -292,6 +292,115 @@ body {
 			h3 {
 				font-size: 1.2em;
 			}
+		}
+		
+		#content-2b {
+			@include prepend(1);
+			@include append(1);
+			
+			.back-nav {
+				@include border-radius(3px);
+				display: block;
+				width: 75px;
+				text-align: center;
+				background-color: $color_secondary;
+				padding: 10px 10px 8px 10px;
+				margin-bottom: 15px;
+				font-family: $font_normal;
+				line-height: 1em;
+				//@include single-box-shadow(rgba(0,0,0,1), 0, 2px, 0px, 0);					
+				color: $color_alt-primary;
+				cursor: pointer;
+				@include transition(all, 0.5s);
+			}
+			
+			.back-nav:hover {
+				background-color: $color_tertiary;
+				//border: 1px solid $color_con-primary;
+				//@include scalable(0.9);
+			}			
+			
+			.number {
+				float: left;
+				font-size: 2em;
+				padding-right: 10px;
+				height: 100px;
+			}
+			
+			img { 
+				display: block;
+				margin: 0 auto;
+			}
+			
+			.section-a-wrapper {
+				margin-bottom: 20px;
+			}
+			
+			.section-a-left {
+				@include column(6);
+				
+				img {
+					width: 80%;
+					margin: 0 auto;
+				}
+				
+				.image {
+					height: 200px;
+				}
+			}	
+			.section-a-center {
+				@include column(6);
+				
+				img {
+					padding-top: 40px;
+					width: 40%;
+				}
+				.image {
+					height: 200px;
+				}
+			}
+			.section-a-right {
+				@include column(6, true);
+				@include append(1);
+
+				img {
+					padding-top: 40px;
+					width: 40%;
+				}
+				.image {
+					height: 200px;
+				}				
+			}
+			
+			.table, .bullets {
+				@include column(19, true);
+			}
+			
+			.table {
+				margin-bottom: 20px;
+				
+				.image {
+					height: 100px;
+					width: 50px;					
+					float: left;
+					margin-right: 30px;
+				}						
+				
+				img {
+					width: 50px;
+				}		
+				
+				table {
+					width: 100%;
+					
+					td {
+						width: 50%;
+						vertical-align: top;
+						padding: 10px;
+					}
+				}
+			}
+					
 		}
 		
 		// Kontakt page
@@ -369,4 +478,9 @@ h2, h3 {
 
 p {
 	margin-bottom: 1em;
+}
+
+strong {
+	font-weight: bold;
+	font-family: 'TitilliumText22LBold';
 }
