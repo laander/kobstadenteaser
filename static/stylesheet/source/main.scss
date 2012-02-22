@@ -294,7 +294,7 @@ body {
 			}
 		}
 		
-		#content-2b {
+		#content-2b, #content-2a {
 			@include prepend(1);
 			@include append(1);
 			
@@ -322,9 +322,9 @@ body {
 			
 			.number {
 				float: left;
-				font-size: 2em;
+				font-size: 2.5em;
 				padding-right: 10px;
-				height: 100px;
+				height: 130px;
 			}
 			
 			img { 
@@ -340,23 +340,24 @@ body {
 				@include column(6);
 				
 				img {
-					width: 80%;
+					max-width: 80%;
+					max-height: 120px;
 					margin: 0 auto;
 				}
 				
 				.image {
-					height: 200px;
+					height: 150px;
 				}
 			}	
 			.section-a-center {
 				@include column(6);
 				
 				img {
-					padding-top: 40px;
+					//padding-top: 40px;
 					width: 40%;
 				}
 				.image {
-					height: 200px;
+					height: 150px;
 				}
 			}
 			.section-a-right {
@@ -364,11 +365,11 @@ body {
 				@include append(1);
 
 				img {
-					padding-top: 40px;
-					width: 40%;
+					//padding-top: 40px;
+					width: 35%;
 				}
 				.image {
-					height: 200px;
+					height: 150px;
 				}				
 			}
 			
@@ -380,11 +381,15 @@ body {
 				margin-bottom: 20px;
 				
 				.image {
-					height: 100px;
+					height: 120px;
 					width: 50px;					
 					float: left;
 					margin-right: 30px;
 				}						
+
+				tr.row2 .image {
+					height: 80px;
+				}				
 				
 				img {
 					width: 50px;
