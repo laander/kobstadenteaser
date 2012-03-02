@@ -50,6 +50,7 @@ class CollectEmail(BaseHandler):
 
     def post(self):
         email = self.request.POST.get("email")
+        email = email.lower()
         data = {
                 "email": email,
             }
