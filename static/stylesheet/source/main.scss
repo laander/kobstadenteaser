@@ -180,7 +180,11 @@ body {
 					color: darken($color_tertiary, 15%);
 					font-style: italic;
 					margin-bottom: 0.5em;
-				}				
+				}	
+
+				form {
+					margin-bottom: 20px;
+				}			
 				
 				input {
 					@include border-radius(3px);
@@ -315,6 +319,10 @@ body {
 				@include transition(all, 0.5s);
 			}
 			
+			#small_text {
+				font-size: 0.7em;	
+			}
+			
 			.back-nav:hover {
 				background-color: $color_tertiary;
 				//border: 1px solid $color_con-primary;
@@ -446,20 +454,23 @@ body {
 
 			.employee h3{
 				font-family: 'TitilliumText22LBold';
-				margin-bottom: 1em;
+				margin-bottom: 0em;
 				font-size: 1.1em;
 				line-height: 1.5em;
 				color:#4394D0;
-				
+			}
+			.employee a.mail {
+				margin-bottom: 1em;
+				display: block;
 			}
 
 			.employee {
 				
 				table {
 					width:100%;
-					
-					td {
-						padding:5px;
+
+					td img {
+						padding: 0 15px 15px 0;
 					}
 				}
 			}
@@ -469,6 +480,11 @@ body {
 					padding-right: 20px;
 				}
 			}
+		}
+
+		#content-5 {
+			@include prepend(1);
+			@include append(1);
 		}
 	}
 }
